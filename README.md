@@ -212,3 +212,5 @@ About Repository with laboratory works on the discipline DM-DMS (Data Models and
 
 
 ## Datalogical model
+
+![Datalogical model PNG](ticket-booking-application-db-schema.png)
