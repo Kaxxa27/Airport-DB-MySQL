@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS passport(
     CHECK (CHAR_LENGTH(last_name) > 0),
     CHECK (CHAR_LENGTH(pass_number) > 0),
     CHECK (CHAR_LENGTH(identification_number) > 0),
-    CHECK (expiry_date < issue_date)
+    CHECK (expiry_date > issue_date)
 );
 
 -- Table city
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS city(
 -- Table airport
 CREATE TABLE IF NOT EXISTS airport(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	name VARCHAR(45) NOT NULL,
+	name VARCHAR(100) NOT NULL,
 	code_IATA CHAR(3) NOT NULL,
 	city_id INT NOT NULL UNIQUE,
     
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS plane(
 	registration_number VARCHAR(20) NOT NULL UNIQUE,
     
     CHECK (CHAR_LENGTH(model) > 0),
-    CHECK (registration_number > 0),
+    CHECK (CHAR_LENGTH(registration_number) > 0),
     CHECK (capacity > 0)
 );
 
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS schedule(
     
 	FOREIGN KEY (flight_id) REFERENCES flight(id) ON DELETE CASCADE,
     
-    CHECK (expected_departure > expected_arrival),
+    CHECK (expected_departure < expected_arrival),
     CHECK (real_departure IS NULL OR real_departure < real_arrival)
 );
 
