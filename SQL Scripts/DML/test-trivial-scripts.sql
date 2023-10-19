@@ -7,7 +7,7 @@ SELECT username, password FROM user;
 SELECT * FROM city
 WHERE country_id = 1;
 
-select * from country c
+select * from country cr
 INNER JOIN city ct 
 ON c.id = ct.country_id
 WHERE c.name = 'Belarus';
@@ -28,6 +28,9 @@ SELECT DISTINCT country_id from city;
 
 SELECT COUNT(*) from city;
 
+SELECT * FROM airport;
+
+
 SELECT * FROM user;
 UPDATE user 
 SET username = 'Kaxxa27'
@@ -44,3 +47,7 @@ WHERE id IN (2, 3);
 
 SELECT MAX(price) FROM ticket;
 SELECT MIN(price) FROM ticket;
+
+SELECT * FROM airline
+WHERE airline.name LIKE '%A%'
+ORDER BY country_id DESC;
