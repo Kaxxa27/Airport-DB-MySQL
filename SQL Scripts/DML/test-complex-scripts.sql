@@ -31,6 +31,10 @@ INNER JOIN flight f ON t.flight_id = f.id
 GROUP BY f.flight_number
 HAVING sum(price) BETWEEN 1000 AND 5000;
 
+-- EXPLAIN 
+SELECT * FROM plane;
+EXPLAIN SELECT * FROM plane;
+
 -- EXISTS
 SELECT * FROM user u
 INNER JOIN passport p ON p.user_id = u.id
