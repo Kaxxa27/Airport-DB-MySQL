@@ -22,6 +22,15 @@ INNER JOIN airport a ON f.airport_id = a.id
 INNER JOIN city c ON a.city_id = c.id
 WHERE price > 500 AND code_IATA = 'MSQ';
 
+-- HAVING 
+SELECT flight_number, price FROM ticket t
+INNER JOIN flight f ON t.flight_id = f.id;
+
+SELECT flight_number, sum(price) FROM ticket t
+INNER JOIN flight f ON t.flight_id = f.id
+GROUP BY f.flight_number
+HAVING sum(price) BETWEEN 1000 AND 5000;
+
 -- INNER (OUTER), LEFT, RIGHT, CROSS, SELF
 SELECT model FROM plane; 
 
