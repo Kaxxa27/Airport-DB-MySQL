@@ -31,6 +31,15 @@ INNER JOIN flight f ON t.flight_id = f.id
 GROUP BY f.flight_number
 HAVING sum(price) BETWEEN 1000 AND 5000;
 
+-- CASE
+SELECT name,
+CASE 
+	WHEN name = "Male" THEN 1
+	WHEN name = "Female" THEN 0
+END AS is_male
+FROM gender
+ORDER BY name;
+
 -- EXPLAIN 
 SELECT * FROM plane;
 EXPLAIN SELECT * FROM plane;
