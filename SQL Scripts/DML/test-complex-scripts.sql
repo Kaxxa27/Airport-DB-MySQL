@@ -31,6 +31,12 @@ INNER JOIN flight f ON t.flight_id = f.id
 GROUP BY f.flight_number
 HAVING sum(price) BETWEEN 1000 AND 5000;
 
+-- UNION 
+SELECT * FROM user u1
+UNION ALL
+SELECT  * FROM user u2
+ORDER BY username;
+
 -- INNER (OUTER), LEFT, RIGHT, CROSS, SELF
 SELECT model FROM plane; 
 
