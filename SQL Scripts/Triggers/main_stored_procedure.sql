@@ -3,7 +3,7 @@ USE aerobooking;
 
 -- UpdateUserInfo PROCEDURE
 
-DROP PROCEDURE UpdateUserInfo;
+-- DROP PROCEDURE UpdateUserInfo;
 DELIMITER //
 CREATE PROCEDURE UpdateUserInfo
 (IN userID INT, IN newUserName VARCHAR(45), 
@@ -26,4 +26,40 @@ DELIMITER ;
 
 select * from user;
 -- Используя оператор CALL
-CALL UpdateUserInfo(5, NULL, 'test123', 'opp@mmm.rom', 0, NULL, NULL);
+-- CALL UpdateUserInfo(5, NULL, 'test123', 'opp@mmm.rom', 0, NULL, NULL);
+
+
+-- CancelTicketReservation PROCEDURE
+
+DELIMITER //
+CREATE PROCEDURE CancelTicketReservation(IN ticketID INT)
+BEGIN
+    DELETE FROM ticket
+    WHERE id = ticketID;
+END;
+//
+DELIMITER ;
+
+select * from ticket;
+
+-- CALL CancelTicketReservation(1);
+
+
+-- GetAverageTicketPrice PROCEDURE
+
+DELIMITER //
+CREATE PROCEDURE GetAverageTicketPrice(IN flightNumber VARCHAR(10), OUT averagePrice DECIMAL(10,3))
+BEGIN
+    SELECT AVG(t.price) INTO averagePrice
+    FROM ticket t
+    JOIN flight f ON t.flight_id = f.id
+    WHERE f.flight_number = flightNumber;
+END;
+//
+DELIMITER ;
+
+select * from ticket;
+select * from flight;
+CALL GetAverageTicketPrice('QF 101', @averagePrice);
+select @averagePrice;
+-- Теперь переменная @averagePrice содержит результат
