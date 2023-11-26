@@ -117,17 +117,17 @@ VALUES
     ('Toronto Pearson International Airport', 'YYZ', 27),
     ('Vancouver International Airport', 'YVR', 28);
     
-INSERT INTO plane (model, capacity, registration_number)
+INSERT INTO plane (model, capacity, registration_number, is_under_maintenance)
 VALUES
-    ('Boeing 737', 150, 'N12345'),
-    ('Airbus A320', 180, 'F67890'),
-    ('Boeing 747', 350, 'A54321'),
-    ('Airbus A330', 250, 'B98765'),
-    ('Embraer E190', 100, 'C45678'),
-    ('Boeing 777', 300, 'D87654'),
-    ('Mig-15', 799, '444'),
-    ('F5C', 1, '666'),
-    ('Mig-29', 300, '777');
+    ('Boeing 737', 150, 'N12345', 0),
+    ('Airbus A320', 180, 'F67890', 0),
+    ('Boeing 747', 350, 'A54321', 0),
+    ('Airbus A330', 250, 'B98765', 0),
+    ('Embraer E190', 100, 'C45678', 0),
+    ('Boeing 777', 300, 'D87654', 0),
+    ('Mig-15', 799, '444', 0),
+    ('F5C', 1, '666', 0),
+    ('Mig-29', 300, '777', 0);
     
 INSERT INTO airline (name, description, country_id)
 VALUES

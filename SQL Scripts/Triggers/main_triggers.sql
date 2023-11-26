@@ -48,3 +48,32 @@ END;
 
 DELIMITER ;
 
+-- prevent_flight_registration_on_maintenance TRIGGER
+
+select * from plane;
+select * from flight;
+select * from ticket;
+
+DELIMITER //
+
+CREATE TRIGGER prevent_flight_registration_on_maintenance
+BEFORE INSERT ON flight
+FOR EACH ROW
+BEGIN
+    DECLARE plane_is_under_maintenance INT;
+    SELECT is_under_maintenance INTO plane_is_under_maintenance
+    FROM plane
+    WHERE id = NEW.plane_id;
+
+    IF plane_is_under_maintenance = 1 
+    THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'CUSTOMER_ERROR --> Cannot register flight for a plane under maintenance.';
+    END IF;
+END;
+
+//
+
+DELIMITER ;
+
+

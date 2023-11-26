@@ -103,6 +103,7 @@ CREATE TABLE IF NOT EXISTS plane(
 	model VARCHAR(45) NOT NULL,
 	capacity INT NOT NULL,
 	registration_number VARCHAR(20) NOT NULL UNIQUE,
+    is_under_maintenance INT NOT NULL,
     
     CHECK (CHAR_LENGTH(model) > 0),
     CHECK (CHAR_LENGTH(registration_number) > 0),
