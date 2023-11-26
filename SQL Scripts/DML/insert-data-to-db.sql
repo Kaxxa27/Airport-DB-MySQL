@@ -1,5 +1,11 @@
 USE aerobooking;
 
+INSERT INTO event_type (name)
+VALUES
+    ('Registration'),
+    ('Login'),
+    ('Logout');
+
 -- Test data about users
 INSERT INTO user (username, password, email, is_active, is_admin, is_staff)
 VALUES
@@ -202,11 +208,11 @@ VALUES
     (15.0, 2),
     (30.0, 3);
     
-INSERT INTO event_type (name)
-VALUES
-    ('Registration'),
-    ('Login'),
-    ('Logout');
+-- INSERT INTO event_type (name)
+-- VALUES
+--     ('Registration'),
+--     ('Login'),
+--     ('Logout');
     
 INSERT INTO event (name, datetime, description, user_id, event_type_id)
 VALUES

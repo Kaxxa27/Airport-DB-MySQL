@@ -1,18 +1,19 @@
 USE aerobooking;
 
+
+-- update_ticket_price TRIGGER 
 select * from seatclass;
 select * from ticket
 order by price;
 --  DROP TRIGGER update_ticket_price;
 
 DELIMITER //
-
 CREATE TRIGGER update_ticket_price
 BEFORE INSERT ON ticket
 FOR EACH ROW
 BEGIN
     DECLARE seatclass_multiplier DECIMAL(10,2) DEFAULT 1;
-
+    
     -- Получаем множитель стоимости класса места
     SELECT CASE sc.name
            WHEN 'Economy' THEN 1
@@ -28,11 +29,22 @@ BEGIN
     -- Рассчитываем новую стоимость
     SET NEW.price = NEW.price * seatclass_multiplier;
 END;
-
 //
 DELIMITER ;
 
+-- log_event TRIGGER 
 
+select * from event;
+DELIMITER //
 
+CREATE TRIGGER log_user_event
+AFTER INSERT ON user
+FOR EACH ROW
+BEGIN
+    INSERT INTO event (name, datetime, description, user_id, event_type_id)
+    VALUES ('User Added', NOW(), CONCAT('New user added: [ username: ', NEW.username, ' ]'), NEW.id, 1);
+END;
+//
 
+DELIMITER ;
 
