@@ -12,7 +12,8 @@ VALUES
 	('Kaxxa', 'KaxxaPassword', 'Kaxxa@gmail.com', 1, 0, 0),
     ('Den', 'DenPassword', 'den@mail.ru', 1, 0, 0),
     ('admin', 'admin_password', 'admin@example.com', 1, 1, 0),
-    ('manager', 'manager_password', 'manager@example.com', 1, 0, 1);
+    ('manager', 'manager_password', 'manager@example.com', 1, 0, 1),
+    ('testProc', 'testProc_password', 'test@example.com', 1, 0, 1);
 
 -- Test data about nationality
 INSERT INTO nationality (name) 
