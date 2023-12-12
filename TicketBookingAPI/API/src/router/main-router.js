@@ -18,5 +18,6 @@ router.use('/seat', require('./seat-router'));
 router.use('/plane', require('./plane-router'));
 router.use('/airport', require('./airport-router'));
 router.use('/seatclass', require('./seatclass-router'));
+router.use('/scripts', require('./scripts-router'));
 
 module.exports = router;
