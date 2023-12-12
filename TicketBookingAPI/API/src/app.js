@@ -1,4 +1,5 @@
 require('dotenv').config();
+const errorMiddleware = require('./middleware/error-middleware');
 
 const express = require('express');
 const router = require('./router/main-router');
@@ -9,6 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/api', router);
+app.use(errorMiddleware);
 
 const start = () => {
     try {
