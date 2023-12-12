@@ -14,6 +14,10 @@ module.exports = class ApiError {
     };
 
     static BadRequestError(message, errors){
-        return new ApiError(404, message, errors);
+        return new ApiError(400, message, errors);
+    };
+
+    static NotFoundError(message){
+        return new ApiError(404, message);
     };
 };
