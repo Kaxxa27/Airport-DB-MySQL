@@ -8,5 +8,6 @@ router.use('/nationality', require('./nationality-router'));
 router.use('/country', require('./country-router'));
 router.use('/city', require('./city-router'));
 router.use('/event', require('./event-router'));
+router.use('/event-type', require('./event-type-router'));
 
 module.exports = router;
