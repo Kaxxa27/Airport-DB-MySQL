@@ -11,5 +11,6 @@ router.use('/event', require('./event-router'));
 router.use('/event-type', require('./event-type-router'));
 router.use('/ticket', require('./ticket-router'));
 router.use('/flight', require('./flight-router'));
+router.use('/schedule', require('./schedule-router'));
 
 module.exports = router;
