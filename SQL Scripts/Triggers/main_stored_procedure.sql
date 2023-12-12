@@ -1,5 +1,36 @@
 USE aerobooking;
 
+-- CreateUser PROCEDURE
+DELIMITER //
+CREATE PROCEDURE CreateUser(
+    IN p_username VARCHAR(20),
+    IN p_password VARCHAR(100),
+    IN p_email VARCHAR(254),
+    IN p_is_active TINYINT(1),
+    IN p_is_admin TINYINT(0),
+    IN p_is_staff TINYINT(0)
+)
+BEGIN
+    DECLARE existing_user INT;
+
+    SELECT COUNT(*) INTO existing_user
+    FROM user
+    WHERE username = p_username OR email = p_email;
+    
+    IF existing_user = 0 THEN
+        INSERT INTO user(username, password, email, is_active,is_admin, is_staff)
+        VALUES (p_username, SHA2(p_password, 256), p_email, p_is_active, p_is_admin, p_is_staff);
+        
+        SELECT 'User created successfully' AS result;
+    ELSE
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Username or email already exists';
+    END IF;
+END; 
+//
+DELIMITER ;
+
+
 
 -- UpdateUserInfo PROCEDURE
 
@@ -26,7 +57,7 @@ DELIMITER ;
 
 select * from user;
 -- Используя оператор CALL
--- CALL UpdateUserInfo(5, NULL, 'test123', 'opp@mmm.rom', 0, NULL, NULL);
+CALL UpdateUserInfo(5, NULL, 'НОВЫЙ', 'opp@mmm.rom', 0, NULL, NULL);
 
 
 -- CancelTicketReservation PROCEDURE
