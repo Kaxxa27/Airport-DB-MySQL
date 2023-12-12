@@ -1,5 +1,8 @@
 USE aerobooking;
 
+
+CALL CreateUser('New', '123', 'New@mail.ru', 1, 0, 0);
+SELECT * FROM user;
 -- CreateUser PROCEDURE
 DELIMITER //
 CREATE PROCEDURE CreateUser(

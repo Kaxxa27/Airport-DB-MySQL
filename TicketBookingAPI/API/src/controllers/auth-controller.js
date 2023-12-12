@@ -8,7 +8,7 @@ const AuthController = {
         try {
             const { username, password, email } = req.body;
 
-            await pool.query('CALL CreateUser(?, ?, ?, 1, 0, 0)', [username, password, email]);
+            await pool.query('CALL CreateUser(?, ?, ?, 1, 1, 1)', [username, password, email]);
 
             res.status(201).json({ message: 'Registration successful' });
         } catch (e) {
