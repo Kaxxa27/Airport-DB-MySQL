@@ -15,5 +15,6 @@ router.use('/schedule', require('./schedule-router'));
 router.use('/baggage', require('./baggage-router'));
 router.use('/airline', require('./airline-router'));
 router.use('/seat', require('./seat-router'));
+router.use('/plane', require('./plane-router'));
 
 module.exports = router;
